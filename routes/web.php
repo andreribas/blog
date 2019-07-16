@@ -1,12 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/post/{post}', 'PostController@show');
 
 Route::get('/contact', function () {
     return view('contact');
