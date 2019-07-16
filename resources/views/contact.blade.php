@@ -4,6 +4,6 @@
 
 @section('content')
 
-    <h1>Blog</h1>
+    <h1>Contact Us</h1>
 
 @endsection
