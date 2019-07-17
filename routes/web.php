@@ -1,9 +1,9 @@
 <?php
 
-Route::get('/', 'PostController@index');
+Route::get('/', function() { return redirect()->route('posts.index'); })->name('home');
 
-Route::get('/post/{post}', 'PostController@show');
+Route::get('/posts', 'PostController@index')->name('posts.index');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/about', function () { return view('about'); })->name('about');
+Route::get('/contact', function () { return view('contact'); })->name('contact');
