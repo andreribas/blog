@@ -3,7 +3,10 @@
 @section('title', 'Posts')
 
 @section('content')
-    <h1>Posts</h1>
+    <div>
+        <h1>Posts</h1>
+        <a href="{{ route('posts.create') }}">Create new Post</a>
+    </div>
 
     @foreach ($posts as $post)
     <article>
