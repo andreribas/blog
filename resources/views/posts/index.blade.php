@@ -3,9 +3,15 @@
 @section('title', 'Posts')
 
 @section('content')
-    <div>
-        <h1>Posts</h1>
-        <a href="{{ route('posts.create') }}">Create new Post</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mr-auto">
+                <h1 class="mr-auto">Posts</h1>
+            </div>
+            <div class="ml-auto">
+                <a href="{{ route('posts.create') }}" class="ml-auto btn btn-primary">Create new Post</a>
+            </div>
+        </div>
     </div>
 
     @foreach ($posts as $post)
