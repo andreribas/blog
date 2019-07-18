@@ -10653,3 +10653,8 @@ body {
   text-align: center;
 }
 
+.post_time {
+  color: darkgray;
+  margin-bottom: 1.25em;
+}
+

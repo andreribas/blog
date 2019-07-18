@@ -17,6 +17,7 @@
     @foreach ($posts as $post)
     <article>
         <a href="{{ route('posts.show', ['post' => $post]) }}"><h2>{{ $post->title }}</h2></a>
+        <p class="post_time">Posted at {{ $post->created_at->format('j F, Y') }}</p>
         <div class="post_body">{{ $post->body }}</div>
     </article>
     @endforeach
