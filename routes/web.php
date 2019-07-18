@@ -1,11 +1,16 @@
 <?php
 
-Route::get('/', function() { return redirect()->route('posts.index'); })->name('home');
+Route::get('/', 'PagesController@index')->name('home');
+Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/contact', 'PagesController@contact')->name('contact');
 
-Route::get('/posts', 'PostController@index')->name('posts.index');
-Route::post('/posts', 'PostController@store')->name('posts.store');
-Route::get('/posts/create', 'PostController@create')->name('posts.create');
-Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::resource('/posts', 'PostController');
+/* Route::resource('/posts', 'PostController') is the same as all the lines bellow */
+//Route::get('/posts', 'PostController@index')->name('posts.index');
+//Route::post('/posts', 'PostController@store')->name('posts.store');
+//Route::get('/posts/create', 'PostController@create')->name('posts.create');
+//Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+//Route::patch('/posts/{post}', 'PostController@update')->name('posts.update');
+//Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
+//Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
 
-Route::get('/about', function () { return view('about'); })->name('about');
-Route::get('/contact', function () { return view('contact'); })->name('contact');
