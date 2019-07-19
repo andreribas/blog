@@ -28,19 +28,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request['title'];
-        $post->body = $request['body'];
-        $post->save();
+        Post::create($request->all());
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
     public function update(Post $post, Request $request)
     {
-        $post->title = $request['title'];
-        $post->body = $request['body'];
-        $post->save();
+        $post->update($request->all());
 
         return redirect()->route('posts.show', ['post' => $post])->with('success', 'Post updated successfully');
     }
