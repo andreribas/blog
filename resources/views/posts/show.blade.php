@@ -13,9 +13,9 @@
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
 
-                <a href="{{ route('posts.edit', ['post' => $post]) }}" class="ml-auto btn btn-primary">Edit</a>
+                <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary mr-2">Edit</a>
 
-                <button type="submit" class="ml-auto btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
         </div>
     </div>

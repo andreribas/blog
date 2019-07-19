@@ -8,17 +8,17 @@
     <form method="POST" action="{{ route('posts.store') }}">
         {{ csrf_field() }}
 
-        <div>
-            <input type="text" name="title" placeholder="Post title">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" placeholder="Post title">
         </div>
 
-        <div>
-            <textarea name="body" placeholder="Post body"></textarea>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea name="body" class="form-control" placeholder="Post body"></textarea>
         </div>
 
-        <div>
-            <button type="submit">Create new Post</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Create Post</button>
 
     </form>
 @endsection
