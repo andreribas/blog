@@ -28,14 +28,22 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        Post::create($request->all());
+        $attributes = $request->validate([
+            'title' => ['required', 'min:5'],
+            'body' => ['required', 'min:50'],
+        ]);
+        Post::create($attributes);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
     public function update(Post $post, Request $request)
     {
-        $post->update($request->all());
+        $attributes = $request->validate([
+            'title' => ['required', 'min:5'],
+            'body' => ['required', 'min:50'],
+        ]);
+        $post->update($attributes);
 
         return redirect()->route('posts.show', ['post' => $post])->with('success', 'Post updated successfully');
     }
