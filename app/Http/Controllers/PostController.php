@@ -33,7 +33,7 @@ class PostController extends Controller
         $post->body = $request['body'];
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
     public function update(Post $post, Request $request)
@@ -42,14 +42,14 @@ class PostController extends Controller
         $post->body = $request['body'];
         $post->save();
 
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('posts.show', ['post' => $post])->with('success', 'Post updated successfully');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post removed successfully');
     }
 
     public function edit(Post $post)
