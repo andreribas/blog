@@ -18,6 +18,7 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'post' => $post,
+            'comments' => $post->comments->sortByDesc('created_at'),
         ]);
     }
 

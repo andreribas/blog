@@ -5,6 +5,7 @@ Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/contact', 'PagesController@contact')->name('contact');
 
 Route::resource('/posts', 'PostController');
+Route::post('/posts/{post}/comments', 'CommentController@store')->name('comments.store');
 /* Route::resource('/posts', 'PostController') is the same as all the lines bellow */
 //Route::get('/posts', 'PostController@index')->name('posts.index');
 //Route::post('/posts', 'PostController@store')->name('posts.store');
