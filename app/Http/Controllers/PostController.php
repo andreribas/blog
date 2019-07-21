@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+
+    /**
+     * PostController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         return view('posts.index', [
@@ -24,6 +34,7 @@ class PostController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Post::class);
         return view('posts.create');
     }
 
@@ -33,6 +44,7 @@ class PostController extends Controller
             'title' => ['required', 'min:5'],
             'body' => ['required', 'min:50'],
         ]);
+        $attributes['user_id'] = Auth::id();
         Post::create($attributes);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
@@ -40,6 +52,8 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request)
     {
+        $this->authorize('update', $post);
+
         $attributes = $request->validate([
             'title' => ['required', 'min:5'],
             'body' => ['required', 'min:50'],
@@ -51,6 +65,8 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post removed successfully');
@@ -58,6 +74,8 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
         return view('posts.edit', [
             'post' => $post,
         ]);
