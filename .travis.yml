@@ -1,0 +1,34 @@
+language: php
+
+php:
+  - "7.2"
+
+services:
+  - mysql
+
+before_script:
+  - cp .env.example .env
+  - composer self-update
+  - composer install --no-interaction
+  - mysql -e "create database blog" -u root
+  - php artisan key:generate
+
+script:
+  - vendor/bin/phpunit
+
+cache:
+  directories:
+    - $TRAVIS_BUILD_DIR/vendor
+    - $HOME/.composer/cache
+
+# Build only master branch and pull-requests
+branches:
+  only:
+    - master
+
+#deploy:
+#  provider: heroku
+#  api_key: $HEROKU_API_KEY
+#  app: andreribas-ibiza
+#  on:
+#    branch: master
