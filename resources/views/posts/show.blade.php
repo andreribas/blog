@@ -8,9 +8,11 @@
         <div class="row mb-2">
             <div class="mr-auto">
                 <h1>{{ $post->title }}</h1>
-                <p class="post_time">Posted at {{ $post->created_at->format('j F, Y') }}</p>
+                <p class="post_time">Posted by {{ $post->user->name }} at {{ $post->created_at->format('j F, Y') }}</p>
             </div>
-            <form class="form-inline ml-auto" method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
+
+            @can('delete', $post)
+            <form class="form-inline ml-auto" method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}" onsubmit="return confirm('Are you sure you want to delete this post?')">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
 
@@ -18,6 +20,7 @@
 
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
+            @endcan
         </div>
 
         <div class="row post_body">{{ $post->body }}</div>

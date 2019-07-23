@@ -20,7 +20,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('posts.index') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -33,6 +33,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="https://github.com/andreribas/blog">Fork me on GitHub</a>
                 </li>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
