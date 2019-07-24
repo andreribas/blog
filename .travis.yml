@@ -26,9 +26,9 @@ branches:
   only:
     - master
 
-#deploy:
-#  provider: heroku
-#  api_key: $HEROKU_API_KEY
-#  app: andreribas-ibiza
-#  on:
-#    branch: master
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: andreribas-blog
+  on:
+    branch: master
